@@ -58,7 +58,7 @@ Organize tasks by priority for efficient sorted retrieval (PriorityBST).
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/Osama6622/Design-Pattern-practice.git](https://github.com/Osama6622/Design-Pattern-practice.git)
+   git clone https://github.com/Osama6622/Design-Pattern-practice.git
 
 1. **Install Dependencies**
    ```bash
