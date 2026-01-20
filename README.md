@@ -1,5 +1,69 @@
-# Vue 3 + Vite
+# Vue3 Demo: Design Patterns Practice
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A Practical Implementation of classic software design patterns using **Vue3 (Composition API)**.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+---
+
+## 🛠 Tech Stack
+
+* **Framework:** [Vue 3](https://vuejs.org/) (Composition API)
+* **State Management:** [Pinia](https://pinia.vuejs.org/)
+* **Validation:** [Vuelidate](https://vuelidate-next.netlify.app/)
+* **Styling:**  [Tailwind](https://tailwindcss.com/)
+
+---
+
+## 🏗️ Design Patterns Implemented
+
+###  Factory Pattern
+The `TaskFactory` is responsible for creating different tasks (Simple, Urgent, Project).
+
+---
+
+###  Observer Pattern
+**Vue's Reactivity System** acts as the Observer here. Components subscribe to store changes and are automatically notified and re-rendered.
+
+---
+
+###  Singleton Pattern
+`Logger` class ensures only one instance exists throughout the app.
+
+---
+
+###  Stack(LIFO)
+Used for undo functionality - the last action performed is the first to be undone (undoStack).
+
+---
+
+###  Queue(FIFO)
+The task queue maintains the order of task creation - the first task added is the first in the queue (taskQueue).
+
+---
+
+### Binary Search Tree
+Organize tasks by priority for efficient sorted retrieval (PriorityBST).
+
+---
+
+##  Key Features
+
+* **Reactive State:** Managed via Pinia stores for clean separation of concerns.
+* **Form Validation:** Vuelidate ensures that tasks are only created when data satisfies business rules.
+* **History Tracking:** Using the Stack structure to allow users to revert recent changes.
+* **Priority Sorting:** Utilizing the Binary Search Tree to visualize task hierarchy.
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/Osama6622/Design-Pattern-practice.git](https://github.com/Osama6622/Design-Pattern-practice.git)
+
+1. **Install Dependencies**
+   ```bash
+   npm install
+
+1. **Run The Project**
+   ```bash
+   npm run dev
