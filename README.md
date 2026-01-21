@@ -35,22 +35,11 @@ Used for undo functionality - the last action performed is the first to be undon
 
 ---
 
-###  Queue(FIFO)
-The task queue maintains the order of task creation - the first task added is the first in the queue (taskQueue).
-
----
-
-### Binary Search Tree
-Organize tasks by priority for efficient sorted retrieval (PriorityBST).
-
----
-
 ##  Key Features
 
 * **Reactive State:** Managed via Pinia stores for clean separation of concerns.
 * **Form Validation:** Vuelidate ensures that tasks are only created when data satisfies business rules.
 * **History Tracking:** Using the Stack structure to allow users to revert recent changes.
-* **Priority Sorting:** Utilizing the Binary Search Tree to visualize task hierarchy.
 
 ---
 

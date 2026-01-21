@@ -1,7 +1,7 @@
 
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import { Logger, TaskFactory, Stack, Queue } from '../utils/patterns';
+import { Logger, TaskFactory, Stack } from '../utils/patterns';
 
 export const useTaskStore = defineStore('task', () => {
     const tasks = ref([]);
@@ -11,9 +11,7 @@ export const useTaskStore = defineStore('task', () => {
     const undoStack = ref(new Stack());
     const logs = ref([]);
     const activeTab = ref('tasks');
-
     const logger = Logger.getInstance();
-
 
 
     const addTask = () => {
