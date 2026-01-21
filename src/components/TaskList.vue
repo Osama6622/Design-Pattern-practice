@@ -1,25 +1,18 @@
-
-<script setup>
-import { useTaskStore } from '../stores/taskStore';
-import { CheckCircle, Circle, Trash2 } from 'lucide-vue-next';
-import { storeToRefs } from 'pinia';
-
-const store = useTaskStore();
-const { tasks } = storeToRefs(store);
-const { toggleTask, deleteTask } = store;
-</script>
-
 <template>
     <div>
         <h3 class="text-lg font-semibold mb-3 text-gray-700">All Tasks</h3>
-        <div class="space-y-2">
+        <div v-if="tasks.length === 0">
+            <p class="text-gray-600 font-medium">No tasks found, please add a task!</p>
+        </div>
+        <div v-else class="space-y-2">
             <div
                 v-for="task in tasks"
                 :key="task.id"
                 :class="[
                     'p-4 rounded-lg border-2 transition-all',
                     task.completed ? 'bg-green-50 border-green-200' : 
-                    task.type === 'urgent' ? 'bg-red-50 border-red-200' : 'bg-white border-gray-200'
+                    task.type === 'urgent' ? 'bg-red-50 border-red-200' : 
+                    task.type === 'project' ? 'bg-blue-50 border-blue-200' : 'bg-white border-gray-200'
                 ]"
             >
                 <div class="flex items-center justify-between">
@@ -45,3 +38,14 @@ const { toggleTask, deleteTask } = store;
         </div>
     </div>
 </template>
+
+
+<script setup>
+import { useTaskStore } from '../stores/taskStore';
+import { CheckCircle, Circle, Trash2 } from 'lucide-vue-next';
+import { storeToRefs } from 'pinia';
+
+const store = useTaskStore();
+const { tasks } = storeToRefs(store);
+const { toggleTask, deleteTask } = store;
+</script>

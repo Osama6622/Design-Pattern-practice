@@ -1,39 +1,6 @@
-
-<script setup>
-import { useTaskStore } from '../stores/taskStore';
-import { Plus } from 'lucide-vue-next';
-import { storeToRefs } from 'pinia';
-
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
-
-const store = useTaskStore();
-const { taskInput, taskType, isUndoEmpty } = storeToRefs(store);
-const { addTask, undo } = store;
-
-const rules = {
-    taskInput: { required, minLength: minLength(3) },
-    taskType: { required }
-};
-
-const v$ = useVuelidate(rules, { taskInput, taskType });
-
-const handleAddTask = async () => {
-    const isFormCorrect = await v$.value.$validate();
-    if (isFormCorrect) {
-        addTask();
-        v$.value.$reset();
-    }
-};
-
-const handleKeypress = (e) => {
-    if (e.key === 'Enter') handleAddTask();
-};
-</script>
-
 <template>
     <div class="mb-6">
-        <div class="flex gap-3 items-start">
+        <div class="flex flex-wrap gap-3 items-start">
             <div class="flex-1 flex flex-col gap-1">
                 <input
                     type="text"
@@ -60,7 +27,6 @@ const handleKeypress = (e) => {
                         v$.taskType.$error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
                     ]"
                 >
-                    <option value="" disabled selected>Select type</option>
                     <option value="simple">Simple</option>
                     <option value="urgent">Urgent</option>
                     <option value="project">Project</option>
@@ -70,7 +36,6 @@ const handleKeypress = (e) => {
                 </span>
             </div>
         
-        <!-- Factory Pattern Usage: Task creation delegated to TaskFactory via store action -->
         <button
             @click="handleAddTask"
             class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2 h-[50px]"
@@ -79,7 +44,6 @@ const handleKeypress = (e) => {
             Add
         </button>
         
-        <!-- Command Pattern / Stack Usage: Undo functionality -->
         <button
             @click="undo"
             :disabled="isUndoEmpty"
@@ -90,3 +54,36 @@ const handleKeypress = (e) => {
     </div>
 </div>
 </template>
+
+
+<script setup>
+import { useTaskStore } from '../stores/taskStore';
+import { Plus } from 'lucide-vue-next';
+import { storeToRefs } from 'pinia';
+
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength } from '@vuelidate/validators';
+
+const store = useTaskStore();
+const { taskInput, taskType, isUndoEmpty } = storeToRefs(store);
+const { addTask, undo } = store;
+
+const rules = {
+    taskInput: { required, minLength: minLength(3) },
+    taskType: { required }
+};
+
+const v$ = useVuelidate(rules, { taskInput, taskType });
+
+const handleAddTask = async () => {
+    const isFormValidated = await v$.value.$validate();
+    if (isFormValidated) {
+        addTask();
+        v$.value.$reset();
+    }
+};
+
+const handleKeypress = (e) => {
+    if (e.key === 'Enter') handleAddTask();
+};
+</script>

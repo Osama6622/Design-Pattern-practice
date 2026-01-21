@@ -1,12 +1,3 @@
-
-<script setup>
-import { useTaskStore } from '../stores/taskStore';
-import { storeToRefs } from 'pinia';
-
-const store = useTaskStore();
-const { logs } = storeToRefs(store);
-</script>
-
 <template>
     <div class="space-y-2">
         <div v-for="(log, idx) in logs" :key="idx" class="p-3 bg-gray-50 border border-gray-200 rounded-lg">
@@ -18,3 +9,12 @@ const { logs } = storeToRefs(store);
         </p>
     </div>
 </template>
+
+
+<script setup>
+import { useTaskStore } from '../stores/taskStore';
+import { storeToRefs } from 'pinia';
+
+const store = useTaskStore();
+const { logs } = storeToRefs(store);
+</script>

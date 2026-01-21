@@ -1,5 +1,5 @@
 
-// DESIGN PATTERN: Singleton Pattern - Logger
+// Singleton Pattern - Logger
 export class Logger {
     static instance = null;
     logs = [];
@@ -20,7 +20,7 @@ export class Logger {
     }
 }
 
-// DESIGN PATTERN: Factory Pattern - Task Factory
+// Factory Pattern - Task Factory
 export class TaskFactory {
     static createTask(type, data) {
         const baseTask = {
@@ -42,20 +42,7 @@ export class TaskFactory {
     }
 }
 
-// DESIGN PATTERN: Observer Pattern - Task Observer
-export class TaskObserver {
-    observers = [];
-
-    subscribe(callback) {
-        this.observers.push(callback);
-    }
-
-    notify(data) {
-        this.observers.forEach(callback => callback(data));
-    }
-}
-
-// DATA STRUCTURE: Stack - Undo/Redo functionality
+// Stack - Undo/Redo functionality (last in first out)
 export class Stack {
     constructor() {
         this.items = [];
@@ -82,7 +69,7 @@ export class Stack {
     }
 }
 
-// DATA STRUCTURE: Queue - Task Queue
+// Queue - Task Queue (first in first out)
 export class Queue {
     constructor() {
         this.items = [];
@@ -106,55 +93,5 @@ export class Queue {
 
     size() {
         return this.items.length;
-    }
-}
-
-// DATA STRUCTURE: Binary Search Tree - Priority Management
-export class TreeNode {
-    constructor(priority, task) {
-        this.priority = priority;
-        this.task = task;
-        this.left = null;
-        this.right = null;
-    }
-}
-
-export class PriorityBST {
-    constructor() {
-        this.root = null;
-    }
-
-    insert(priority, task) {
-        const newNode = new TreeNode(priority, task);
-        if (!this.root) {
-            this.root = newNode;
-            return;
-        }
-
-        let current = this.root;
-        while (true) {
-            if (priority < current.priority) {
-                if (!current.left) {
-                    current.left = newNode;
-                    break;
-                }
-                current = current.left;
-            } else {
-                if (!current.right) {
-                    current.right = newNode;
-                    break;
-                }
-                current = current.right;
-            }
-        }
-    }
-
-    inOrderTraversal(node = this.root, result = []) {
-        if (node) {
-            this.inOrderTraversal(node.left, result);
-            result.push(node.task);
-            this.inOrderTraversal(node.right, result);
-        }
-        return result;
     }
 }
