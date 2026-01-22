@@ -2,6 +2,8 @@
 
 A Practical Implementation of classic software design patterns using **Vue3 (Composition API)**.
 
+**Live Demo:** https://vue3-design-pattern.netlify.app/
+
 ---
 
 ## 🛠 Tech Stack
